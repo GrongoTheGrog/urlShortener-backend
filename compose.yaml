@@ -1,10 +1,15 @@
 services:
   redis:
     image: 'redis:latest'
+    container_name: redis
     ports:
-      - '6379'
+      - '6379:6379'
   app:
     build: .
     command: ["java", "-jar", "urlShortener.jar"]
+    depends_on:
+      - redis
+    environment:
+      - spring.data.redis.host=redis
     ports:
       - "8080:8080"

@@ -1,5 +1,6 @@
 package com.grongo.urlShortener.services.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grongo.urlShortener.services.UrlService;
 import com.grongo.urlShortener.utils.Base62;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ public class UrlServiceImpl implements UrlService {
 
     @Autowired
     RedisServiceImpl redisService;
+    ObjectMapper objectMapper = new ObjectMapper();
 
     @Value("${BASE_URL}")
     String domain;
@@ -23,12 +25,11 @@ public class UrlServiceImpl implements UrlService {
         String id = Base62.encode(redisInt);
 
         redisService.putUrl(id, url);
-        return domain + "/" + id;
+        return domain + "/r/" + id;
     }
 
     @Override
     public String getUrl(String id) {
-        String url = redisService.getUrl(id);
-        return url.substring(1, url.length() - 2);
+        return redisService.getUrl(id);
     }
 }
