@@ -7,6 +7,6 @@ spring:
           - url-shortener-database-0001-002.url-shortener-database.4cpfx0.memorydb.us-east-1.amazonaws.com:6379
           - url-shortener-database-0001-003.url-shortener-database.4cpfx0.memorydb.us-east-1.amazonaws.com:6379
           - url-shortener-database-0001-004.url-shortener-database.4cpfx0.memorydb.us-east-1.amazonaws.com:6379
-      username: root
       password: ${REDIS_PASSWORD}
-      ssl: true
+      ssl:
+        enabled: true
