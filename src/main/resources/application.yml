@@ -1,0 +1,12 @@
+spring:
+  data:
+    redis:
+      cluster:
+        nodes:
+          - clustercfg.url-shortener-database-0001-001.4cpfx0.memorydb.us-east-1.amazonaws.com:6379
+          - clustercfg.url-shortener-database-0001-002.4cpfx0.memorydb.us-east-1.amazonaws.com:6379
+          - clustercfg.url-shortener-database-0001-003.4cpfx0.memorydb.us-east-1.amazonaws.com:6379
+          - clustercfg.url-shortener-database-0001-004.4cpfx0.memorydb.us-east-1.amazonaws.com:6379
+      username: root
+      password: ${REDIS_PASSWORD}
+      ssl: true
