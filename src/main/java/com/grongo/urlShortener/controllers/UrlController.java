@@ -50,8 +50,8 @@ public class UrlController {
             @RequestBody UrlBody urlBody,
             HttpServletRequest request
     ){
-
-        return ResponseEntity.ok().body(urlService.shortenUrl(urlBody.getUrl(), request.getRequestURL().toString()));
+        String requestUrl = urlService.buildRequestUrl(request);
+        return ResponseEntity.ok().body(urlService.shortenUrl(urlBody.getUrl(), requestUrl));
     }
 
     @GetMapping("/r/{id}")
