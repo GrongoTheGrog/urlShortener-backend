@@ -15,12 +15,9 @@ public class UrlServiceImpl implements UrlService {
     RedisServiceImpl redisService;
     ObjectMapper objectMapper = new ObjectMapper();
 
-    @Value("${BASE_URL}")
-    String domain;
-
 
     @Override
-    public String shortenUrl(String url) {
+    public String shortenUrl(String url, String domain) {
         Long redisInt = redisService.getId();
         String id = Base62.encode(redisInt);
 

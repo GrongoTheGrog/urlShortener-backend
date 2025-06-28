@@ -47,9 +47,11 @@ public class UrlController {
     @PostMapping("/shortenUrl")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> shortenUrl(
-            @RequestBody UrlBody urlBody
+            @RequestBody UrlBody urlBody,
+            HttpServletRequest request
     ){
-        return ResponseEntity.ok().body(urlService.shortenUrl(urlBody.getUrl()));
+
+        return ResponseEntity.ok().body(urlService.shortenUrl(urlBody.getUrl(), request.getRequestURL().toString()));
     }
 
     @GetMapping("/r/{id}")
